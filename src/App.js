@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import {Route,Routes} from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
+import MyNotes from './components/MyNotes';
 import { useState } from 'react';
 import NoteState from './context/Notes/NoteState';
 import Alert from './components/Alert';
@@ -31,6 +32,7 @@ function App() {
     <Routes>
           <Route exact path="/" element={<Home showAlert={showAlert}/>} />
       <Route exact path="/about" element={<About />} />
+      <Route exact path="/notes" element={<MyNotes/>} />
       <Route exact path="/login" element={<Login showAlert={showAlert}/>} />
       <Route exact path="/signup" element={<Signup showAlert={showAlert}/>} />
       </Routes>

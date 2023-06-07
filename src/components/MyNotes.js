@@ -2,13 +2,13 @@ import React,{useContext} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useEffect,useRef,useState } from 'react'
 import NoteContext from '../context/Notes/NoteContext'
-// import NoteItem from './NoteItem'
-import AddNote from './AddNote'
+import NoteItem1 from './NoteItem1'
+// import AddNote from './AddNote'
+// import Alert from './Alert';
 
 const Notes = (props) => {
     const context=useContext(NoteContext)
-    // const {notes,getNotes,editNote}=context
-    const {getNotes,editNote}=context
+    const {notes,getNotes,editNote}=context
     let navigate = useNavigate();
    
     const [note, setNote] = useState({id:"",etitle: "", edescription: "", etag: ""})
@@ -25,17 +25,17 @@ const Notes = (props) => {
     const ref=useRef(null)
     const refClose=useRef(null)
 
-    // const updateNote = (currentNote) =>{
-    //   ref.current.click();
-    //   setNote({id:currentNote._id,etitle: currentNote.title, edescription: currentNote.description, etag:currentNote.tag})
+    const updateNote = (currentNote) =>{
+      ref.current.click();
+      setNote({id:currentNote._id,etitle: currentNote.title, edescription: currentNote.description, etag:currentNote.tag})
       
-    // }
+    }
     const handleClick = (e) => {
       console.log("Updating the note...", note)
       e.preventDefault()
       editNote(note.id,note.etitle,note.edescription,note.etag)
       ref.current.click();
-      props.showAlert("Updated successfully","success",)
+    //   props.showAlert("Updated successfully","success",)
   }
 
   const onChange = (e) => {
@@ -43,7 +43,7 @@ const Notes = (props) => {
   }
   return (
     <div>
-      <AddNote showAlert={props.showAlert}/>
+      {/* <AddNote showAlert={props.showAlert}/> */}
       <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
@@ -80,15 +80,15 @@ const Notes = (props) => {
     </div>
   </div>
 </div>
-        {/* <div className="container row my-3">
+        <div className="container row my-3">
        <h1>Your notes</h1>
        <div className="container mx-2" >
        {notes.length===0 && "No notes to display"}
        </div>
        {notes.map((note) =>{
-       return <NoteItem key={note._id} updateNote={updateNote} note={note} showAlert={props.showAlert}/>
+       return <NoteItem1 key={note._id} updateNote={updateNote} note={note} />
 })}
-       </div> */}
+       </div>
     </div>
   )
 }

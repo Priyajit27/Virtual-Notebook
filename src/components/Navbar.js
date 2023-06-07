@@ -29,6 +29,9 @@ const Navbar = () => {
         <li className="nav-item">
         <Link className={`nav-link ${location.pathname==='/about'?"active" :""}`} aria-current="page" to="/about">About</Link>
         </li>
+        <li className="nav-item">
+        <Link className={`nav-link ${location.pathname==='/notes'?"active" :""}`} aria-current="page" to="/notes">Notes</Link>
+        </li>
       </ul>
      {!localStorage.getItem('token') ?<form className="d-flex">
       <Link className="btn btn-primary mx-1" to='/login' role="button">Login</Link>
